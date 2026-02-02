@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For My Twin Flame ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #f9c5d1, #fbc8d4, #fad0c4, #ffe6f0);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      max-width: 520px;
+      padding: 40px 30px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1.2s ease-in-out;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #e75480;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #555;
+      font-weight: normal;
+      margin-bottom: 25px;
+    }
+
+    .heart {
+      font-size: 2.8rem;
+      animation: pulse 1.2s infinite;
+      margin: 15px 0;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.75;
+      min-height: 120px;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-style: italic;
+      color: #777;
+    }
+
+    input {
+      padding: 12px;
+      width: 80%;
+      max-width: 260px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 28px;
+      border: none;
+      border-radius: 22px;
+      background-color: #e75480;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d6456f;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .floating-hearts span {
+      position: absolute;
+      bottom: -50px;
+      font-size: 20px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.6; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="" type="audio/mpeg">
+</audio>
+
+  
+<body>
+  
+<!-- Floating Hearts -->
+<div class="floating-hearts">
+  <span style="left:10%; animation-delay:0s;">❤️</span>
+  <span style="left:30%; animation-delay:2s;">💖</span>
+  <span style="left:50%; animation-delay:4s;">❤️</span>
+  <span style="left:70%; animation-delay:1s;">💗</span>
+  <span style="left:90%; animation-delay:3s;">❤️</span>
+</div>
+
+<!-- PASSWORD SCREEN -->
+<div class="card" id="lockScreen">
+  <h1>🔒 A Private Card</h1>
+  <p>This message is meant only for <strong>My Twin Flame</strong> 🌸</p>
+
+  <input type="password" id="passwordInput" placeholder="Enter password" />
+  <br />
+  <button onclick="unlockCard()">Open Card</button>
+
+  <div class="error" id="errorMsg">Incorrect password. Please try again.</div>
+</div>
+
+<!-- CARD CONTENT -->
+<div class="card" id="cardContent" style="display:none;">
+  <h1>Dear Twin Flame</h1>
+  <h2>This comes from my heart 💖</h2>
+
+  <div class="heart">❤️</div>
+  <p id="typewriter"></p>
+
+  <div class="signature">
+    With gratitude & warmth,<br />
+    Always yours
+  </div>
+</div>
+
+
+<script>
+  const correctPassword = "RTF_SMMI";
+
+  const message =
+    "Thank you for making my life truly beautiful with your goodness, kindness, and warmth. Your presence brings peace, positivity, and meaning to my days. I am genuinely grateful for you, for who you are, and for the light you bring into my life.";
+
+  function unlockCard() {
+  const input = document.getElementById("passwordInput").value;
+  const music = document.getElementById("bgMusic");
+
+  if (input === "RTF_SMMI") {
+    // Unlock the card
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("cardContent").style.display = "block";
+
+    // 🔊 THIS IS THE IMPORTANT LINE
+    music.volume = 0.4;
+    music.play();
+
+    // Start typing effect
+    typeWriterEffect();
+  } else {
+    document.getElementById("errorMsg").style.display = "block";
+  }
+}
+      // Start typing
+      typeWriterEffect();
+    } else {
+      document.getElementById("errorMsg").style.display = "block";
+    }
+  }
+
+  function typeWriterEffect() {
+    let i = 0;
+    const speed = 40;
+    const target = document.getElementById("typewriter");
+    target.innerHTML = "";
+
+    function typing() {
+      if (i < message.length) {
+        target.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+      }
+    }
+    typing();
+  }
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
